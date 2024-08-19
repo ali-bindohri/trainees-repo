@@ -1,0 +1,13 @@
+#!/bin/sh
+green='\033[0;32m'
+no_color='\033[0m'
+
+
+echo "\n${green}checking prettier rules${no_color}"
+# yarn prettier --check . || exit 1
+yarn prettier --check "src/**/*.{js,jsx,ts,tsx,json}" || exit 1
+
+echo "\n${green}checking code rules${no_color}"
+yarn test || exit 1
+
+echo "\n${green}All checks passed. Proceeding with the commit.${no_color}"
